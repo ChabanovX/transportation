@@ -61,7 +61,6 @@ python main.py
 ## Testing
 - The code is tested on three different scenarios with varying supply, demand, and cost matrices. These cases are included in the report.
 - Run tests using the provided test cases in the comments at the end of main.py file
-  ```
 
 ## Contributors
 This project is developed by DSAI-03 group, with contributions documented by the team leader in the report. Ratings are assigned based on individual contributions.

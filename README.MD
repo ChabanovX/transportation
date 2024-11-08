@@ -59,10 +59,8 @@ python main.py
   - Russell’s Approximation method
 
 ## Testing
-- The code is tested on at least three different scenarios with varying supply, demand, and cost matrices. These cases are included in the report.
-- Run tests using the provided test cases in the `tests` folder:
-  ```bash
-  python tests/test_cases.py
+- The code is tested on three different scenarios with varying supply, demand, and cost matrices. These cases are included in the report.
+- Run tests using the provided test cases in the comments at the end of main.py file
   ```
 
 ## Contributors

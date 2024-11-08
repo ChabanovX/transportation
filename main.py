@@ -23,7 +23,7 @@ def print_table(cost_matrix, supply, demand):
         print(f"S{i+1:<2}", end=" ")
         for j in range(n):
             print(f"{cost_matrix[i][j]:<5}", end="")
-        print(f"{supply[i]}")
+        print(f"\t{supply[i]}")
 
     # Print demand row
     print("Demand ", end="")
@@ -154,20 +154,20 @@ def transportation_problem(supply, demand, cost_matrix):
 # demand = np.array([60, 70, 120, 130, 100])             # D -- a vector of coefficients of demand
 
 # TEST CASE 2
-# supply = np.array([20, 30, 25])          # S -- a vector of coefficients of supply
-# cost_matrix = np.array([[8, 6, 10],
-#                         [9, 12, 13],
-#                         [14, 9, 16]])           # C -- a matrix of coefficients of costs          
-# demand = np.array([10, 35, 30])             # D -- a vector of coefficients of demand
+supply = np.array([20, 30, 25])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([[8, 6, 10],
+                        [9, 12, 13],
+                        [14, 9, 16]])           # C -- a matrix of coefficients of costs          
+demand = np.array([10, 35, 30])             # D -- a vector of coefficients of demand
 
 
 # TEST CASE 3
-supply = np.array([160, 140, 170])          # S -- a vector of coefficients of supply
-cost_matrix = np.array([
-    [7, 8, 1, 2],
-    [4, 5, 9, 8],
-    [9, 2, 3, 6]])           # C -- a matrix of coefficients of costs
-demand = np.array([120, 50, 190, 110])             # D -- a vector of coefficients of demand
+# supply = np.array([160, 140, 170])          # S -- a vector of coefficients of supply
+# cost_matrix = np.array([
+#     [7, 8, 1, 2],
+#     [4, 5, 9, 8],
+#     [9, 2, 3, 6]])           # C -- a matrix of coefficients of costs
+# demand = np.array([120, 50, 190, 110])             # D -- a vector of coefficients of demand
 
 
 transportation_problem(supply, demand, cost_matrix)

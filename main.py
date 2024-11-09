@@ -162,11 +162,14 @@ def display_total_cost(allocation, cost_matrix):
             if allocation[i, j] != 0:
                 cost = allocation[i, j] * cost_matrix[i, j]
                 total_cost += cost
-                terms.append(f"({allocation[i, j]} × {cost_matrix[i, j]})")
 
-    
+                allocation_str = int(allocation[i, j]) if allocation[i, j].is_integer() else allocation[i, j]
+                cost_str = int(cost_matrix[i, j]) if cost_matrix[i, j].is_integer() else cost_matrix[i, j]
+                terms.append(f"({allocation_str} * {cost_str})")
+
+
     expression = " + ".join(terms)
-    print(f"{expression} = {total_cost}")
+    print(f"{expression} = {int(total_cost) if total_cost.is_integer() else total_cost}")
 
     return total_cost
 

@@ -204,94 +204,31 @@ def transportation_problem(supply, demand, cost_matrix):
     display_total_cost(russell_solution, cost_matrix)
 
 # TEST CASE 1
-# supply = np.array([140, 180, 160])          # S -- a vector of coefficients of supply
-# cost_matrix = np.array([
-#     [2, 3, 4, 2, 4],
-#     [8, 4, 1, 4, 1],
-#     [9, 7, 3, 7, 2]])           # C -- a matrix of coefficients of costs
-# demand = np.array([60, 70, 120, 130, 100])             # D -- a vector of coefficients of demand
-# !! NOT WORKING FOR RUSSELS
-
-# TEST CASE 2
-# supply = np.array([20, 30, 25])          # S -- a vector of coefficients of supply
-# cost_matrix = np.array([[8, 6, 10],
-#                         [9, 12, 13],
-#                         [14, 9, 16]])           # C -- a matrix of coefficients of costs          
-# demand = np.array([10, 35, 30])             # D -- a vector of coefficients of demand
-# WORKING FOR RUSSELS
-
-
-# TEST CASE 3
-# supply = np.array([160, 140, 170])          # S -- a vector of coefficients of supply
-# cost_matrix = np.array([
-#     [7, 8, 1, 2],
-#     [4, 5, 9, 8],
-#     [9, 2, 3, 6]])           # C -- a matrix of coefficients of costs
-# demand = np.array([120, 50, 190, 110])             # D -- a vector of coefficients of demand
-# !! NOT WORKING FOR RUSSELS
-
-# NEW TEST CASE 4
-# supply = np.array([7, 9, 18])          # S -- a vector of coefficients of supply
-# cost_matrix = np.array([
-#     [19, 30, 50, 10],
-#     [70, 30, 40, 60],
-#     [40, 8, 70, 20]])           # C -- a matrix of coefficients of costs
-# demand = np.array([5, 8, 7, 14])             # D -- a vector of coefficients of demand
-
-# EXPECTED OUTPUT TABLE: 
-# Russell's Approximation Method:
-# [[5. 2. 0. 2.]
-#  [0. 2. 7. 0.]
-#  [0. 4. 0. 14.]]
-
-# NEW TEST CASE 5
-# supply = np.array([20, 60, 70])          # S -- a vector of coefficients of supply
-# cost_matrix = np.array([
-#     [13, 11, 15, 40],
-#     [17, 14, 12, 13],
-#     [18, 18, 15, 12]])           # C -- a matrix of coefficients of costs
-# demand = np.array([30, 30, 40, 50])
-
-# TEST CASE 6
-# TODO: Not solves Voguls
-supply = np.array([12, 17, 11])          # S -- a vector of coefficients of supply
-cost_matrix = np.array([
-    [50, 75, 30, 45],
-    [65, 80, 40, 60],
-    [40, 70, 50, 55]])           # C -- a matrix of coefficients of costs
-demand = np.array([10, 10, 10, 10])
-
-# Expected:
-
-supply = np.array([12, 17, 11])          # S -- a vector of coefficients of supply
-cost_matrix = np.array([
-    [50, 75, 30, 45],
-    [65, 80, 40, 60],
-    [40, 70, 50, 55]])           # C -- a matrix of coefficients of costs
-demand = np.array([10, 10, 10, 10])
-
+supply = np.array([20, 30, 25])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([[8, 6, 10],
+                        [9, 12, 13],
+                        [14, 9, 16]])           # C -- a matrix of coefficients of costs          
+demand = np.array([10, 35, 30])             # D -- a vector of coefficients of demand
 
 transportation_problem(supply, demand, cost_matrix)
 
+# TEST CASE 2
+supply = np.array([7, 9, 18])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([
+    [19, 30, 50, 10],
+    [70, 30, 40, 60],
+    [40, 8, 70, 20]])           # C -- a matrix of coefficients of costs
+demand = np.array([5, 8, 7, 14])             # D -- a vector of coefficients of demand
 
-# TEST CASE 1
-# print("\n=== TEST CASE 1 ===")
-# # Test case with balanced supply and demand
-# test_supply = np.array([15, 25, 10])
-# test_demand = np.array([20, 15, 15]) 
-# test_cost = np.array([
-#     [6, 4, 8],
-#     [7, 9, 11],
-#     [5, 3, 7]
-# ])
+transportation_problem(supply, demand, cost_matrix)
 
-# print("\nTest Case Parameters:")
-# print("Supply:", test_supply)
-# print("Demand:", test_demand)
-# print("Cost Matrix:")
-# print(test_cost)
-# print("\nSolving test case...")
-# transportation_problem(test_supply, test_demand, test_cost)
+# NEW TEST CASE 3
+supply = np.array([20, 60, 70])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([
+    [13, 11, 15, 40],
+    [17, 14, 12, 13],
+    [18, 18, 15, 12]])           # C -- a matrix of coefficients of costs
+demand = np.array([30, 30, 40, 50])
 
-# Expected optimal solution should have minimum total cost
-# Can be verified by comparing results from different methods
+transportation_problem(supply, demand, cost_matrix)
+

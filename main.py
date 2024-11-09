@@ -51,30 +51,37 @@ def vogel_approximation(supply, demand, cost_matrix):
     """Vogel's Approximation Method for finding initial feasible solution."""
     m, n = len(supply), len(demand)
     x = np.zeros((m, n))
-    cost_matrix = cost_matrix.astype(float)  # Convert cost matrix to float to use np.inf
+    cost_matrix = cost_matrix.astype(float)
 
-    while any(supply) and any(demand):
+    while np.any(supply > 0) and np.any(demand > 0):
         # Calculate penalties for rows
         penalty_rows = []
         for row in cost_matrix:
             finite_values = sorted([val for val in row if val != np.inf])
             if len(finite_values) > 1:
-                penalty_rows.append(finite_values[1] - finite_values[0])
+                min1, min2 = finite_values[0], finite_values[1]
+                diff = min2 - min1
             elif len(finite_values) == 1:
-                penalty_rows.append(finite_values[0])
+                diff = finite_values[0]
             else:
-                penalty_rows.append(0)
+                diff = 0
+            penalty_rows.append(diff)
 
         # Calculate penalties for columns
         penalty_cols = []
         for col in cost_matrix.T:
             finite_values = sorted([val for val in col if val != np.inf])
             if len(finite_values) > 1:
-                penalty_cols.append(finite_values[1] - finite_values[0])
+                min1, min2 = finite_values[0], finite_values[1]
+                diff = min2 - min1
             elif len(finite_values) == 1:
-                penalty_cols.append(finite_values[0])
+                diff = finite_values[0]
             else:
-                penalty_cols.append(0)
+                diff = 0
+            penalty_cols.append(diff)
+
+        # print(f"Row penalties: {penalty_rows}")
+        # print(f"Column penalties: {penalty_cols}")
 
         # Determine row or column with the highest penalty
         row_idx = np.argmax(penalty_rows)
@@ -86,12 +93,15 @@ def vogel_approximation(supply, demand, cost_matrix):
             j = col_idx
             i = np.argmin(cost_matrix[:, j])
         
-        # Allocate to the chosen cell
         allocation = min(supply[i], demand[j])
         x[i, j] = allocation
         supply[i] -= allocation
         demand[j] -= allocation
-        cost_matrix[i, j] = np.inf  # Mark the cell as allocated
+        if supply[i] == 0:
+            cost_matrix[i, :] = np.inf  # Mark entire row as unusable
+        if demand[j] == 0:
+            cost_matrix[:, j] = np.inf  # Mark entire column as unusable
+
 
     return x
 
@@ -170,12 +180,12 @@ def transportation_problem(supply, demand, cost_matrix):
     print(russell_solution)
 
 # TEST CASE 1
-supply = np.array([140, 180, 160])          # S -- a vector of coefficients of supply
-cost_matrix = np.array([
-    [2, 3, 4, 2, 4],
-    [8, 4, 1, 4, 1],
-    [9, 7, 3, 7, 2]])           # C -- a matrix of coefficients of costs
-demand = np.array([60, 70, 120, 130, 100])             # D -- a vector of coefficients of demand
+# supply = np.array([140, 180, 160])          # S -- a vector of coefficients of supply
+# cost_matrix = np.array([
+#     [2, 3, 4, 2, 4],
+#     [8, 4, 1, 4, 1],
+#     [9, 7, 3, 7, 2]])           # C -- a matrix of coefficients of costs
+# demand = np.array([60, 70, 120, 130, 100])             # D -- a vector of coefficients of demand
 # !! NOT WORKING FOR RUSSELS
 
 # TEST CASE 2
@@ -228,6 +238,13 @@ cost_matrix = np.array([
 demand = np.array([10, 10, 10, 10])
 
 # Expected:
+
+supply = np.array([12, 17, 11])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([
+    [50, 75, 30, 45],
+    [65, 80, 40, 60],
+    [40, 70, 50, 55]])           # C -- a matrix of coefficients of costs
+demand = np.array([10, 10, 10, 10])
 
 
 transportation_problem(supply, demand, cost_matrix)

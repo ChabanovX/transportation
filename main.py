@@ -153,12 +153,12 @@ def transportation_problem(supply, demand, cost_matrix):
 #     [9, 7, 3, 7, 2]])           # C -- a matrix of coefficients of costs
 # demand = np.array([60, 70, 120, 130, 100])             # D -- a vector of coefficients of demand
 
-# TEST CASE 2
-supply = np.array([20, 30, 25])          # S -- a vector of coefficients of supply
-cost_matrix = np.array([[8, 6, 10],
-                        [9, 12, 13],
-                        [14, 9, 16]])           # C -- a matrix of coefficients of costs          
-demand = np.array([10, 35, 30])             # D -- a vector of coefficients of demand
+# # TEST CASE 2
+# supply = np.array([20, 30, 25])          # S -- a vector of coefficients of supply
+# cost_matrix = np.array([[8, 6, 10],
+#                         [9, 12, 13],
+#                         [14, 9, 16]])           # C -- a matrix of coefficients of costs          
+# demand = np.array([10, 35, 30])             # D -- a vector of coefficients of demand
 
 
 # TEST CASE 3
@@ -168,6 +168,26 @@ demand = np.array([10, 35, 30])             # D -- a vector of coefficients of d
 #     [4, 5, 9, 8],
 #     [9, 2, 3, 6]])           # C -- a matrix of coefficients of costs
 # demand = np.array([120, 50, 190, 110])             # D -- a vector of coefficients of demand
+
+# NEW TEST CASE 4
+supply = np.array([7, 9, 18])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([
+    [19, 30, 50, 10],
+    [70, 30, 40, 60],
+    [40, 8, 70, 20]])           # C -- a matrix of coefficients of costs
+demand = np.array([5, 8, 7, 14])             # D -- a vector of coefficients of demand
+
+# EXPECTED OUTPUT TABLE: 
+# Russell's Approximation Method:
+# [[5. 2. 0. 2.]
+#  [0. 2. 7. 0.]
+#  [0. 4. 0. 14.]]
+
+# CURRENT OUTPUT TABLE:
+# Russell's Approximation Method:
+# [[5. 0. 0. 2.]
+#  [0. 8. 1. 0.]
+#  [0. 0. 0. 0.]]
 
 
 transportation_problem(supply, demand, cost_matrix)

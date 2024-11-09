@@ -170,12 +170,12 @@ def transportation_problem(supply, demand, cost_matrix):
     print(russell_solution)
 
 # TEST CASE 1
-# supply = np.array([140, 180, 160])          # S -- a vector of coefficients of supply
-# cost_matrix = np.array([
-#     [2, 3, 4, 2, 4],
-#     [8, 4, 1, 4, 1],
-#     [9, 7, 3, 7, 2]])           # C -- a matrix of coefficients of costs
-# demand = np.array([60, 70, 120, 130, 100])             # D -- a vector of coefficients of demand
+supply = np.array([140, 180, 160])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([
+    [2, 3, 4, 2, 4],
+    [8, 4, 1, 4, 1],
+    [9, 7, 3, 7, 2]])           # C -- a matrix of coefficients of costs
+demand = np.array([60, 70, 120, 130, 100])             # D -- a vector of coefficients of demand
 # !! NOT WORKING FOR RUSSELS
 
 # TEST CASE 2
@@ -209,6 +209,25 @@ def transportation_problem(supply, demand, cost_matrix):
 # [[5. 2. 0. 2.]
 #  [0. 2. 7. 0.]
 #  [0. 4. 0. 14.]]
+
+# NEW TEST CASE 5
+# supply = np.array([20, 60, 70])          # S -- a vector of coefficients of supply
+# cost_matrix = np.array([
+#     [13, 11, 15, 40],
+#     [17, 14, 12, 13],
+#     [18, 18, 15, 12]])           # C -- a matrix of coefficients of costs
+# demand = np.array([30, 30, 40, 50])
+
+# TEST CASE 6
+# TODO: Not solves Voguls
+supply = np.array([12, 17, 11])          # S -- a vector of coefficients of supply
+cost_matrix = np.array([
+    [50, 75, 30, 45],
+    [65, 80, 40, 60],
+    [40, 70, 50, 55]])           # C -- a matrix of coefficients of costs
+demand = np.array([10, 10, 10, 10])
+
+# Expected:
 
 
 transportation_problem(supply, demand, cost_matrix)

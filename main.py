@@ -152,6 +152,24 @@ def russell_approximation(supply, demand, cost_matrix):
 
     return x
 
+def display_total_cost(allocation, cost_matrix):
+    terms = []
+    total_cost = 0
+
+    print("The minimum total transportation cost is:")
+    for i in range(allocation.shape[0]):
+        for j in range(allocation.shape[1]):
+            if allocation[i, j] != 0:
+                cost = allocation[i, j] * cost_matrix[i, j]
+                total_cost += cost
+                terms.append(f"({allocation[i, j]} × {cost_matrix[i, j]})")
+
+    
+    expression = " + ".join(terms)
+    print(f"{expression} = {total_cost}")
+
+    return total_cost
+
 # Main function to solve the transportation problem
 def transportation_problem(supply, demand, cost_matrix):
     # Convert cost_matrix to float for compatibility with np.inf
@@ -168,16 +186,19 @@ def transportation_problem(supply, demand, cost_matrix):
     nw_corner_solution = north_west_corner(supply.copy(), demand.copy())
     print("\nNorth-West Corner Method:")
     print(nw_corner_solution)
-    
+    display_total_cost(nw_corner_solution, cost_matrix)
+
     # Vogel's Approximation Method
     vogel_solution = vogel_approximation(supply.copy(), demand.copy(), cost_matrix.copy())
     print("\nVogel's Approximation Method:")
     print(vogel_solution)
+    display_total_cost(vogel_solution, cost_matrix)
     
     # Russell's Approximation Method
     russell_solution = russell_approximation(supply.copy(), demand.copy(), cost_matrix.copy())
     print("\nRussell's Approximation Method:")
     print(russell_solution)
+    display_total_cost(russell_solution, cost_matrix)
 
 # TEST CASE 1
 # supply = np.array([140, 180, 160])          # S -- a vector of coefficients of supply

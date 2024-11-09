@@ -116,11 +116,7 @@ def russell_approximation(supply, demand, cost_matrix):
     for i in range(m):
         for j in range(n):
             reduced_cost_matrix[i, j] = cost_matrix[i, j] - u[i] - v[j]
-            # if cost_adjusted < 0:
-            #     allocation = min(supply[i], demand[j])
-            #     x[i, j] = allocation
-            #     supply[i] -= allocation
-            #     demand[j] -= allocation
+
 
     # Select the variable having the most negative Δ value, break ties arbitrarily
     most_negative_value = np.min(reduced_cost_matrix)

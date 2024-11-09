@@ -102,20 +102,48 @@ def russell_approximation(supply, demand, cost_matrix):
     u = np.zeros(m)  # Row potentials
     v = np.zeros(n)  # Column potentials
     cost_matrix = cost_matrix.astype(float)  # Convert cost matrix to float
+    reduced_cost_matrix = np.zeros((m, n))
 
+
+    # Calculate U_i is the largest cost in row and V_j is the largest cost in column
     for i in range(m):
-        u[i] = min(cost_matrix[i])
+        u[i] = max(cost_matrix[i])
     for j in range(n):
-        v[j] = min(cost_matrix[:, j])
+        v[j] = max(cost_matrix[:, j])
+
+    # Compute reduced cost of each cell Δ_ij = c_ij - U_i - V_j
 
     for i in range(m):
         for j in range(n):
-            cost_adjusted = cost_matrix[i, j] - u[i] - v[j]
-            if cost_adjusted < 0:
-                allocation = min(supply[i], demand[j])
-                x[i, j] = allocation
-                supply[i] -= allocation
-                demand[j] -= allocation
+            reduced_cost_matrix[i, j] = cost_matrix[i, j] - u[i] - v[j]
+            # if cost_adjusted < 0:
+            #     allocation = min(supply[i], demand[j])
+            #     x[i, j] = allocation
+            #     supply[i] -= allocation
+            #     demand[j] -= allocation
+
+    # Select the variable having the most negative Δ value, break ties arbitrarily
+    most_negative_value = np.min(reduced_cost_matrix)
+
+    # Allocate as much as possible. Eliminate necessary cells from consideration
+    while np.min(reduced_cost_matrix) < 0:
+        # Find the cell with the most negative reduced cost
+        min_index = np.unravel_index(np.argmin(reduced_cost_matrix), reduced_cost_matrix.shape)
+        i, j = min_index
+
+        # Allocate as much as possible to this cell
+        allocation = min(supply[i], demand[j])
+        x[i, j] = allocation
+        supply[i] -= allocation
+        demand[j] -= allocation
+
+        # If supply or demand is exhausted, remove the corresponding row or column
+        if supply[i] == 0:
+            reduced_cost_matrix[i, :] = np.inf
+        if demand[j] == 0:
+            reduced_cost_matrix[:, j] = np.inf
+
+
     return x
 
 # Main function to solve the transportation problem
@@ -185,12 +213,6 @@ def transportation_problem(supply, demand, cost_matrix):
 # [[5. 2. 0. 2.]
 #  [0. 2. 7. 0.]
 #  [0. 4. 0. 14.]]
-
-# CURRENT OUTPUT TABLE:
-# Russell's Approximation Method:
-# [[5. 0. 0. 2.]
-#  [0. 8. 1. 0.]
-#  [0. 0. 0. 0.]]
 
 
 transportation_problem(supply, demand, cost_matrix)

@@ -1,0 +1,88 @@
+FIRST CASE
+The input parameter table:
+    D1    D2    D3    Supply
+S1  8.0  6.0  10.0      20
+S2  9.0  12.0 13.0      30
+S3  14.0 9.0  16.0      25
+Demand 10   35   30   
+
+North-West Corner Method:
+[[10. 10.  0.]
+ [ 0. 25.  5.]
+ [ 0.  0. 25.]]
+The minimum total transportation cost is:
+(10 * 8) + (10 * 6) + (25 * 12) + (5 * 13) + (25 * 16) = 905
+
+Vogel's Approximation Method:
+[[ 0. 10. 10.]
+ [10.  0. 20.]
+ [ 0. 25.  0.]]
+The minimum total transportation cost is:
+(10 * 6) + (10 * 10) + (10 * 9) + (20 * 13) + (25 * 9) = 735
+
+Russell's Approximation Method:
+[[ 0. 10. 10.]
+ [10.  0. 20.]
+ [ 0. 25.  0.]]
+The minimum total transportation cost is:
+(10 * 6) + (10 * 10) + (10 * 9) + (20 * 13) + (25 * 9) = 735
+
+
+SECOND CASE
+The input parameter table:
+    D1    D2    D3    D4    Supply
+S1  19.0 30.0 50.0 10.0         7
+S2  70.0 30.0 40.0 60.0         9
+S3  40.0 8.0  70.0 20.0         18
+Demand 5    8    7    14   
+
+North-West Corner Method:
+[[ 5.  2.  0.  0.]
+ [ 0.  6.  3.  0.]
+ [ 0.  0.  4. 14.]]
+The minimum total transportation cost is:
+(5 * 19) + (2 * 30) + (6 * 30) + (3 * 40) + (4 * 70) + (14 * 20) = 1015
+
+Vogel's Approximation Method:
+[[ 5.  0.  0.  2.]
+ [ 0.  0.  7.  2.]
+ [ 0.  8.  0. 10.]]
+The minimum total transportation cost is:
+(5 * 19) + (2 * 10) + (7 * 40) + (2 * 60) + (8 * 8) + (10 * 20) = 779
+
+Russell's Approximation Method:
+[[ 5.  2.  0.  0.]
+ [ 0.  2.  7.  0.]
+ [ 0.  4.  0. 14.]]
+The minimum total transportation cost is:
+(5 * 19) + (2 * 30) + (2 * 30) + (7 * 40) + (4 * 8) + (14 * 20) = 807
+
+
+THIRD CASE
+The input parameter table:
+    D1    D2    D3    D4    Supply
+S1  13.0 11.0 15.0 40.0         20
+S2  17.0 14.0 12.0 13.0         60
+S3  18.0 18.0 15.0 12.0         70
+Demand 30   30   40   50   
+
+North-West Corner Method:
+[[20.  0.  0.  0.]
+ [10. 30. 20.  0.]
+ [ 0.  0. 20. 50.]]
+The minimum total transportation cost is:
+(20 * 13) + (10 * 17) + (30 * 14) + (20 * 12) + (20 * 15) + (50 * 12) = 1990
+
+Vogel's Approximation Method:
+[[20.  0.  0.  0.]
+ [ 0. 30. 30.  0.]
+ [10.  0. 10. 50.]]
+The minimum total transportation cost is:
+(20 * 13) + (30 * 14) + (30 * 12) + (10 * 18) + (10 * 15) + (50 * 12) = 1970
+
+Russell's Approximation Method:
+[[ 0. 20.  0.  0.]
+ [10. 10. 40.  0.]
+ [20.  0.  0. 50.]]
+The minimum total transportation cost is:
+(20 * 11) + (10 * 17) + (10 * 14) + (40 * 12) + (20 * 18) + (50 * 12) = 1970

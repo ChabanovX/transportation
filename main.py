@@ -203,6 +203,8 @@ def transportation_problem(supply, demand, cost_matrix):
     print(russell_solution)
     display_total_cost(russell_solution, cost_matrix)
 
+print("FIRST CASE")
+
 # TEST CASE 1
 supply = np.array([20, 30, 25])          # S -- a vector of coefficients of supply
 cost_matrix = np.array([[8, 6, 10],
@@ -211,6 +213,8 @@ cost_matrix = np.array([[8, 6, 10],
 demand = np.array([10, 35, 30])             # D -- a vector of coefficients of demand
 
 transportation_problem(supply, demand, cost_matrix)
+
+print("\n\nSECOND CASE")
 
 # TEST CASE 2
 supply = np.array([7, 9, 18])          # S -- a vector of coefficients of supply
@@ -221,6 +225,8 @@ cost_matrix = np.array([
 demand = np.array([5, 8, 7, 14])             # D -- a vector of coefficients of demand
 
 transportation_problem(supply, demand, cost_matrix)
+
+print("\n\nTHIRD CASE")
 
 # NEW TEST CASE 3
 supply = np.array([20, 60, 70])          # S -- a vector of coefficients of supply
